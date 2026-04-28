@@ -1,9 +1,8 @@
-/*
- * While in local development, make sure you've run `pnpm run build` first.
- */
+'use strict';
 
-import { concurrently } from './dist/src/index.js';
+// Bootstraps yargs for ESM:
+import esmPlatformShim from './lib/platform-shims/esm.mjs';
+import {YargsFactory} from './build/lib/yargs-factory.js';
 
-export * from './dist/src/index.js';
-
-export default concurrently;
+const Yargs = YargsFactory(esmPlatformShim);
+export default Yargs;
